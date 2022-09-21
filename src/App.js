@@ -1,5 +1,5 @@
-import { ConnectWallet, useAddress, useMetamask, useNFTDrop } from "@thirdweb-dev/react";
-import { useState, useEffect } from "react";
+import { useAddress, useMetamask, useNFTDrop } from "@thirdweb-dev/react";
+import { useState } from "react";
 
 const App = () => {
   const address = useAddress();
