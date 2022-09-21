@@ -1,9 +1,12 @@
 import { ConnectWallet, useAddress, useMetamask, useNFTDrop } from "@thirdweb-dev/react";
 import { useState, useEffect } from "react";
 
+export default function Home() {
+  return (
+      <ConnectWallet accentColor="#f213a4" colorMode="light" />
+  );
+}
 const App = () => {
-  const address = useAddress();
-  const connectWithMetamask = useMetamask();
   const nftDrop = useNFTDrop ("0x1A2F1965013d909C8539821CA7b1Bd4D616F09f9");
   const [hasClaimedNFT, setHasClaimedNFT] = useState(false);
   const [isClaiming, setisClaiming] = useState(false);
@@ -19,26 +22,20 @@ const App = () => {
     } finally {
       setisClaiming(false);
     }
-  };
-
-  if(!address) {
-    return <button onClick={connectWithMetamask}>Connect With Metamask</button>
   }
 
   if (hasClaimedNFT) {
     return (
       <div>
-        You have a membership NFT!!🎉
+        You have a membership NFT!!
       </div>
     )
   }
 
   return (
     <div>
-      <p>It seems like you don't have one 😔</p>
+      <p>It seems like you don't have one =/</p>
       <button disable={isClaiming} onClick={mintNft}>Mint NFT</button>
     </div>
   )
 }
-
-export default App;
